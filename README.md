@@ -178,13 +178,16 @@ If it is succesful you should see a json payload return that looks like this:
 
 We'll need to generate AWS CLI credentials from IAM User in order to use the AWS CLI.
 
+
+
+
 ## Terraform Basics
 
 ### Terraform Registry
 
-Terraform sources their providers and modules from the Terraform registry which located at [registry.terraform.io](https://registry.terraform.io/)
+Terraform sources their providers and modules from the Terraform registry which is located at [registry.terraform.io](https://registry.terraform.io/)
 
-- **Providers** is an interface to APIs that will allow to create resources in terraform.
+- **Providers** is an interface to APIs that will allow us to create resources in terraform.
 - **Modules** are a way to make large amount of terraform code modular, portable and sharable.
 
 [Randon Terraform Provider](https://registry.terraform.io/providers/hashicorp/random)
@@ -214,24 +217,37 @@ This will run a plan and pass the changeset to be execute by terraform. Apply sh
 
 If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
-### Terraform Lock Files
+#### Terraform Destroy
+
+`teraform destroy`
+This will destroy resources.
+
+You can also use the auto approve flag to skip the approve prompt eg. `terraform apply --auto-approve`
+
+#### Terraform Lock Files
 
 `.terraform.lock.hcl` contains the locked versioning for the providers or modulues that should be used with this project.
 
 The Terraform Lock File **should be committed** to your Version Control System (VSC) eg. Github
 
-### Terraform State Files
+#### Terraform State Files
 
 `.terraform.tfstate` contain information about the current state of your infrastructure.
 
 This file **should not be commited** to your VCS.
 
-This file can contain sensentive data.
+This file can contain sensitive data.
 
 If you lose this file, you lose knowning the state of your infrastructure.
 
 `.terraform.tfstate.backup` is the previous state file state.
 
-### Terraform Directory
+#### Terraform Directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+
+## AWS Bucket
+
+AWS bucket name should not contain capital letters, it should be all lowercase
+So I edited the the random resource in main.tf the make bucket name lowercase by adding **lower = true**
