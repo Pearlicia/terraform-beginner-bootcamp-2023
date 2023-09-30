@@ -310,3 +310,7 @@ Provide the following code (replace your token in the file):
 ```
 
 Automated the terraform cloud state workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
+
+
+## Set up tf as Terraform Alias
+I set up a script in /bin/set_tf_alias to set tf as terraform alias
