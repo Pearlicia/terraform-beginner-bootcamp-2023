@@ -251,3 +251,60 @@ If you lose this file, you lose knowning the state of your infrastructure.
 
 AWS bucket name should not contain capital letters, it should be all lowercase
 So I edited the the random resource in main.tf the make bucket name lowercase by adding **lower = true**
+
+
+## Terraform Cloud
+Login to terraform cloud then create an organization
+
+Then create a project and then create a workspace under the newly created project
+copy down the configuration file from terraform cloud and paste in main.tf. After that, terraform init returns an error
+asking for login to terraform cloud so enter terraform login in the terminal 
+open this link in the browser to create a token  https://app.terraform.io/app/settings/tokens?source=terraform-login
+
+**touch /home/gitpod/.terraform.d/credentials.tfrc.json** then
+**open  /home/gitpod/.terraform.d/credentials.tfrc.json**
+
+paste this into credentials.tfrc.json
+
+```json
+{
+    "credentials": {
+      "app.terraform.io": {
+        "token": "2rgtCpBSD7UldQ.atlasv1.emz5mZ9xlBfX79trstYIWhoe64K0Rk1qMTHMqaVsSikszd6FGllwA4AapqE5ghdhhdE"
+      }
+       
+    }
+}
+
+```
+
+After saving the json file you'll be logged in
+
+### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. However it does not work expected in Gitpod VsCode in the browser.
+
+The workaround is manually generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+``````
