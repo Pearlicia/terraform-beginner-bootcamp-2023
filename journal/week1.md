@@ -22,6 +22,7 @@ git checkout <SHA>
 git tag M.M.P
 git push --tags
 git checkout main
+```
 
 ## Root Module Structure
 
@@ -60,18 +61,58 @@ We can use the `-var` flag to set an input variable or override a variable in th
 ### var-file flag
 
 - TODO: document this flag
+- DONE
+The `-var-file` flag in is used to specify a file from which to read input variables. This allows you to define a set of variables in a separate file rather than specifying them directly on the command line. For example:
+
+```sh
+terraform apply -var-file=my-vars.tfvars
+
+```
+where my-vars.tfvars is a file containing variable definitions in JSON or HCL format.
 
 ### terraform.tvfars
 
-This is the default file to load in terraform variables in blunk
+The `terraform.tfvars` file is a default file that Terraform automatically loads to provide variable values. This file allows you to define variable values in a key-value pair format without having to specify them on the command line.
+
+Here's an example of how you can structure a `terraform.tfvars` file:
+
+```sh
+# terraform.tfvars
+
+region = "us-west-2"
+instance_type = "t2.micro"
+ami = "ami-12345678"
+```
+In this example, we've defined three variables: `region`, `instance_type`, and `ami`, along with their corresponding values.
+
+When you run `terraform plan` or `terraform apply` without specifying variable values through flags or other methods, Terraform will automatically load the values from this `terraform.tfvars` file if it exists in the working directory.
+
+This provides a convenient way to organize and manage your variable values, especially when dealing with multiple variables and configurations. Remember to handle sensitive information carefully and avoid storing sensitive data directly in this file.
+
 
 ### auto.tfvars
 
 - TODO: document this functionality for terraform cloud
+- **DONE**
+The `auto.tfvars` file is automatically loaded by Terraform, if present in the current directory, without the need to explicitly specify it. Terraform will automatically load variables from this file and apply them. This file can contain variable definitions in JSON or HCL format.
 
 ### order of terraform variables
 
 - TODO: document which terraform variables takes presendence.
+- **DONE**
+When it comes to the order of precedence for Terraform variables, the hierarchy is as follows:
+
+1. **Environment Variables (`TF_VAR_name`):**
+Variables set using the `TF_VAR_name` environment variable have the highest precedence. For example, `TF_VAR_region=us-west-2`
+
+2. **Variable Definitions in Files (`-var and -var-file`):**
+Variables specified using the `-var` flag or `-var-file` flag while running **terraform** commands. These can be in JSON or HCL format.
+
+3. **Terraform Configuration Files (`*.tf and *.tfvars`):**
+Variables defined within the Terraform configuration files (`.tf`) and variable files (`.tfvars`). These can be overridden by other methods if the same variable is defined multiple times.
+
+4. **Defaults in Variable Definitions:**
+Default values specified in the variable definitions in the Terraform configuration files.
 
 
 ## Dealing With Configuration Drift
