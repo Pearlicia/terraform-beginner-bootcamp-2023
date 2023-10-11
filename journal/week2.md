@@ -56,6 +56,7 @@ All of the code for our server is stored in the `server.rb` file.
 
 
 ## Go terminal commands
+To run the go code
 cd into terraform-provider-terratowns 
 and the run
 
@@ -72,3 +73,11 @@ go get github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema
 go get github.com/hashicorp/terraform-plugin-sdk/v2/plugin
 go build -o terraform-provider-terratowns_v1.0.0
 ```
+
+## CRUD
+
+Terraform Provider resources utilize CRUD.
+
+CRUD stands for Create, Read Update, and Delete
+
+https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
