@@ -53,3 +53,22 @@ bundle exec ruby server.rb
 ```
 
 All of the code for our server is stored in the `server.rb` file.
+
+
+## Go terminal commands
+cd into terraform-provider-terratowns 
+and the run
+
+```
+go build -o terraform-provider-terratowns_v1.0.0
+```
+
+Which throw error asking to run the below code
+
+
+```sh
+go mod init
+go get github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema
+go get github.com/hashicorp/terraform-plugin-sdk/v2/plugin
+go build -o terraform-provider-terratowns_v1.0.0
+```
