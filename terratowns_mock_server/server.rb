@@ -131,7 +131,7 @@ class TerraTownsMockServer < Sinatra::Base
     content_version = payload["content_version"]
     town = payload["town"]
 
-    # printing the variables out to console to make it easier
+    # printing the variables out to console to make it eaiser
     # to see or debug what we have inputed into this endpoint
     puts "name #{name}"
     puts "description #{description}"
