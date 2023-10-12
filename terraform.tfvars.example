@@ -6,3 +6,13 @@ content_version=1
 assets_path="/workspace/terraform-beginner-bootcamp-2023/public/assets/"
 terratowns_endpoint="https://terratowns.cloud/api"
 TF_VAR_terratowns_access_token="d8e37fgfdddddddddddd"
+
+terratowns_endpoint="https://terratowns.cloud/api"
+akara = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/akara"
+  content_version = 2 
+}
+pancake = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/pancake"
+  content_version = 1 
+}
