@@ -9,7 +9,7 @@
 - [Week 2 Journal](journal/week2.md)
 
 ## Full Architectural Diagram
-![full-architectural-diagram](./public/assets/Architectural-Diagram.png)
+![full-architectural-diagram](./public/akara/assets/Architectural-Diagram.png)
 
 
 ## Extras
